@@ -9,7 +9,7 @@ class Http{
 		if(file_exists($path))
 			unlink($path);
 		touch($path);
-		$cookie_path = $path;
+		$this->cookie_path = $path;
 	}
 
 	public function get($url, $header){
