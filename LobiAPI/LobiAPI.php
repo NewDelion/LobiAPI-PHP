@@ -26,7 +26,7 @@ class LobiAPI{
 			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
 			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
 
-		return $this->NetworkAPI->post('https://lobi.co/signin', $post_data, $header2);
+		return strpos($this->NetworkAPI->post('https://lobi.co/signin', $post_data, $header2), 'ログインに失敗しました') === false;
 	}
 
 	public function TwitterLogin($mail, $password){

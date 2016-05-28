@@ -2,6 +2,7 @@
 namespace delion\APISample;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
 use delion\APISample\LobiAPI;//ネームスペースは各自修正
 
 class Main extends PluginBase{
@@ -20,6 +21,6 @@ class Main extends PluginBase{
 		}
 
 		$api->ChangeProfile($name_after, $description_after);
-		$this->getLogger()->info('プロフィールを変更しました。');
+		$this->getLogger()->info(TextFormat::YELLOW.'プロフィールを変更しました。');
 	}
 }
