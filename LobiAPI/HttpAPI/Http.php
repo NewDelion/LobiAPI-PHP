@@ -41,7 +41,7 @@ class Http{
 		return $result;
 	}
 
-	public function post_x_www_form_urlencoded($url, $data, $header){
+	public function post($url, $data, $header){
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -57,7 +57,6 @@ class Http{
 			$req_header[] = 'Origin: ' . $header.Origin;
 		if($header.UserAgent != '')
 			$req_header[] = 'User-Agent: ' . $header.UserAgent;
-		$req_header[] = 'Content-Type: application/x-www-form-urlencoded';
 		if($header.Referer != '')
 			$req_header[] = 'Referer: ' . $header.Referer;
 		if($header.AcceptEncoding != '')
