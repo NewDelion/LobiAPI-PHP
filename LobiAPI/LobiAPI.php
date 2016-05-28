@@ -183,6 +183,17 @@ class LobiAPI{
 
 		return json_decode($this->NetworkAPI->get("https://web.lobi.co/api/group/$uid/chats?count=$count", $header), false);
 	}
+
+	public function Goo($group_id, $chat_id){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = ['test'=>'test_content'];
+
+		$this->NetworkAPI->post('https://web.lobi.co/api/group/$group_id/chats/like', $data, $header);
+	}
 }
 
 class Pattern{
