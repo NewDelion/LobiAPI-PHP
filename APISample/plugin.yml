@@ -1,0 +1,8 @@
+name: APISample
+version: 0.1.0
+main: delion\APISample\Main
+description: LobiAPIを使用してLobiのプロフィールを指定したプロフィールに変更するサンプルプラグイン
+api: 1.10.0
+load: POSTWORLD
+author: delion
+
