@@ -250,14 +250,14 @@ class LobiAPI{
 		$this->NetworkAPI->post("https://web.lobi.co/api/me/contacts/remove", $data, $header);
 	}
 
-	public function MakeThread($group_id, $message){
+	public function MakeThread($group_id, $message, $shout = false){
 		$header = (new Header())
 			->setAccept('application/json, text/plain, */*')
 			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
 			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
 
 		$data = [
-			'type' => 'normal',
+			'type' => $shout ? 'shout' : 'normal',
 			'lang' => 'ja',
 			'message' => $message
 		];
