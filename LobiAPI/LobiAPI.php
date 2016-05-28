@@ -194,6 +194,117 @@ class LobiAPI{
 
 		$this->NetworkAPI->post('https://web.lobi.co/api/group/$group_id/chats/like', $data, $header);
 	}
+
+	public function UnGoo($group_id, $chat_id){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = ['id' => $chat_id];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/group/$group_id/chats/unlike", $data, $header);
+	}
+
+	public function Boo($group_id, $chat_id){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = ['id' => $chat_id];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/group/$group_id/chats/boo", $data, $header);
+	}
+
+	public function UnBoo($group_id, $chat_id){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = ['id' => $chat_id];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/group/$group_id/chats/unboo", $data, $header);
+	}
+
+	public function Follow($user_id){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = ['users' => $user_id];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/me/contacts", $data, $header);
+	}
+
+	public function UnFollow($user_id){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = ['users' => $user_id];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/me/contacts/remove", $data, $header);
+	}
+
+	public function MakeThread($group_id, $message){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = [
+			'type' => 'normal',
+			'lang' => 'ja',
+			'message' => $message
+		];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/group/$group_id/chats", $data, $header);
+	}
+
+	public function Reply($group_id, $thread_id, $message){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = [
+			'type' => 'normal',
+			'lang' => 'ja',
+			'message' => $message,
+			'reply_to' => $thread_id
+		];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/group/$group_id/chats", $data, $header);
+	}
+
+	public function MakePrivateGroup($user_id){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = ['user' => $user_id];
+
+		$this->NetworkAPI->post('https://web.lobi.co/api/groups/1on1s', $data, $header);
+	}
+
+	public function ChangeProfile($name, $description){
+		$header = (new Header())
+			->setAccept('application/json, text/plain, */*')
+			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+		$data = [
+			'name' => $name,
+			'description' => $description
+		];
+
+		$this->NetworkAPI->post("https://web.lobi.co/api/me/profile", $data, $header);
+	}
 }
 
 class Pattern{
