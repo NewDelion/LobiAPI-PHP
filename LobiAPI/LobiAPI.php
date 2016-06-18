@@ -40,7 +40,7 @@ class LobiAPI{
 		$redirect_after_login = Pattern::get_string($source, Pattern::$redirect_after_login, '"');
 		$oauth_token = Pattern::get_string($source, Pattern::$oauth_token, '"');
 
-		$post_data = sprintf('authenticity_token=%s&redirect_after_login=%s&oauth_token=%s&session%5Busername_or_email%5D=%s&session%5Bpassword%5D=%s', $authenticity_token, $redirect_after_login, $oauth_token, $mail, $password);
+		$post_data = 'authenticity_token=' . $authenticity_token . '&redirect_after_login=' . $redirect_after_login . '&oauth_token=' . $oauth_token . '&session%5Busername_or_email%5D=' . $mail . '&session%5Bpassword%5D=' . $password;
 		$header2 = (new Header())
 			->setAccept('text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
 			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
