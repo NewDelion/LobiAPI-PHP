@@ -50,7 +50,7 @@ class LobiAPI{
 		if(strpos('Twitterにログイン') !== false)
 			return false;
 
-		return strpos($this->NetworkAPI->get(Pattern::get_string($source, Pattern::$redirect_after_login, '"'), $header1), 'ログインに失敗しました') === false;
+		return strpos($this->NetworkAPI->get(Pattern::get_string($source2, Pattern::$twitter_redirect_to_lobi, '"'), $header1), 'ログインに失敗しました') === false;
 	}
 
 	public function GetMe(){
