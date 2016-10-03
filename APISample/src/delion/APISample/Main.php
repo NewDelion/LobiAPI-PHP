@@ -15,12 +15,11 @@ class Main extends PluginBase{
 
 		if($api->Login($mail, $password)){//twitter認証の場合はTwitterLoginを使用する
 			$this->getLogger()->info(TextFormat::AQUA.'ログイン成功');
+			$api->ChangeProfile($name_after, $description_after);
+			$this->getLogger()->info(TextFormat::YELLOW.'プロフィールを変更しました。');
 		}
 		else{
 			$this->getLogger()->info(TextFormat::RED.'ログイン失敗');
 		}
-
-		$api->ChangeProfile($name_after, $description_after);
-		$this->getLogger()->info(TextFormat::YELLOW.'プロフィールを変更しました。');
 	}
 }
