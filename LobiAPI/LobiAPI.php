@@ -47,7 +47,7 @@ class LobiAPI{
 			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
 
 		$source2 = $this->NetworkAPI->post('https://api.twitter.com/oauth/authorize', $post_data, $header2);
-		if(strpos('Twitterにログイン') !== false)
+		if(strpos($source2, 'Twitterにログイン') !== false)
 			return false;
 
 		return strpos($this->NetworkAPI->get(Pattern::get_string($source2, Pattern::$twitter_redirect_to_lobi, '"'), $header1), 'ログインに失敗しました') === false;
