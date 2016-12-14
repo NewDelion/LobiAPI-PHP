@@ -110,7 +110,7 @@ class LobiAPI{
 			->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
 			->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
 
-		return json_decode($this->NetworkAPI->get('https://web.lobi.co/api/me?fields=premium', $header), false);
+		return json_decode($this->NetworkAPI->get('https://web.lobi.co/api/info/notifications?platform=any', $header), false);
 	}
 
 	public function GetContacts($uid){
