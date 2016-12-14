@@ -183,6 +183,15 @@ class LobiAPI{
 
 		return json_decode($this->NetworkAPI->get("https://web.lobi.co/api/group/$uid/chats?count=$count", $header), false);
 	}
+	
+	public function GetReplies($uid,$chatid){
+        	$header = (new Header())
+           		->setAccept('application/json, text/plain, */*')
+          	 	->setUserAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36')
+          	 	->setAcceptLanguage('ja,en-US;q=0.8,en;q=0.6');
+
+       		return json_decode($this->NetworkAPI->get("https://web.lobi.co/api/group/$uid/chats/replies?to=$chatid", $header),true);
+   	}
 
 	public function Goo($group_id, $chat_id){
 		$header = (new Header())
